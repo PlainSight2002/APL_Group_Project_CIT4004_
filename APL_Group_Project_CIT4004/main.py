@@ -1,3 +1,12 @@
+'''
+Authors
+Sassania Hibbert 1901201
+Darrell King 1803342
+Shavar Mclean 1903893
+Mark Vernon 1908916
+Jelani Jackson 1901811
+'''
+
 from flask import Flask, request, jsonify
 from symbol_table import *
 from app_parser import parser

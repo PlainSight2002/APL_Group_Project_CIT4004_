@@ -1,3 +1,12 @@
+'''
+Authors
+Sassania Hibbert 1901201
+Darrell King 1803342
+Shavar Mclean 1903893
+Mark Vernon 1908916
+Jelani Jackson 1901811
+'''
+
 # Function to generate Python code from the AST
 # It takes a variable indent_level to keep track of the indentation level
 def generate_code(ast, indent_level=0):

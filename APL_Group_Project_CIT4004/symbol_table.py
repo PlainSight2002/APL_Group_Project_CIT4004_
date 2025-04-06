@@ -1,3 +1,11 @@
+'''
+Authors
+Sassania Hibbert 1901201
+Darrell King 1803342
+Shavar Mclean 1903893
+Mark Vernon 1908916
+Jelani Jackson 1901811
+'''
 # Symbol table entry for variables
 # name, var_type, value=None, is_locked=True
 class VariableSymbol:
