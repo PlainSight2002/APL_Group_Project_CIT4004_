@@ -1,0 +1,9 @@
+Flask==3.0.3
+Flask-Cors==4.0.0
+gunicorn==22.0.0
+MarkupSafe==2.1.5
+packaging==24.0
+ply==3.11
+Werkzeug==3.0.2
+pyodbc==5.2.0
+openai==1.66.0

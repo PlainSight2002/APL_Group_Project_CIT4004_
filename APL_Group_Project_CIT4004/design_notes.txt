@@ -1,0 +1,133 @@
+KEYWORDS
+=======================================
+BOOK
+TICKET
+CONFIRM
+PAY
+CANCEL
+SET
+RESERVATION
+FROM (FROMDestination)
+TO (TODestination)
+ON
+=======================================
+
+repeatif
+
+
+
+
+COMMENT: #-- Another comment
+END OF LINE: . (LINEEND)
+
+
+CANCEL TICKET @{place} :: {ticket_no}.
+CANCEL TICKET FOR {person_name}.
+CANCEL TICKET FOR {person_name} :: {ticket_no}.
+[CANCEL TICKET @ Knuford Express FOR Darrell King :: 6464463]
+
+CANCEL RESERVATION @ {place} FOR {person_name}
+CANCEL RESERVATION @ {place} FOR {person_name} :: {resv_no}.
+[CANCEL RESERVATION @ Knuford Express FOR Darrell King :: 6464463]
+
+BOOK RESERVATION @ {place} FOR {person_name} FROM {location} TO {destination} ON {date}. (knuxford, flights)
+BOOK RESERVATION @ {place} FOR {person_name} ON {date}. (hotel, restaurant, concert, events)
+BOOK RESERVATION @ {place} FOR {person_name} WITHRANGE {date}. (hotel, restaurant, concert, events)
+
+BOOK TICKET @ {place} FOR {person_name} FROM {location} TO {destination} ON {date}. (knuxford, flights)
+BOOK TICKET @ {place} FOR {person_name} ON {date}. (hotel, restaurant, concert, events)
+
+CONFIRM RESERVATION @{place} :: {ticket_no}.
+CONFIRM RESERVATION @{place} FOR {person} :: {ticcket_no}.
+CONFIRM RESERVATION @{place} FOR Darrell King.
+[CONFIRM RESERVATION @{place} FOR Darrell King :: 6464463.]
+
+PAY RESERVATION @{place} :: {resv_no}. (Ticket for Darrell King paid successfully)
+PAY RESERVATION @{place} FOR {person} :: {ticcket_no}.
+PAY RESERVATION @{place} FOR {person}.
+[PAY RESERVATION @{place} FOR Darrell King :: 6464463.]
+
+LIST {statement_for_ai}.
+
+
+
+USER STATUS/HISTORY:
+has reserved, confirmed, paid for, or canceled over time.
+
+
+NOTE: any reservation, and other booking details etc, will be simulated and stored locally
+
+
+LLM should provide real-time information what dates and times the resource is available, how many tickets are available, the cost of the tickets, and reservation, payment and cancellation policies.
+
+
+
+REQUIRED:
+Develop an executable that performs lexical, syntactic and semantic analysis on input source code written in your programming language
+
+
+Generate executable target code
+
+
+
+
+
+
+
+
+
+FINAL LEXAR
+========================================================================================================
+COMMENT: #-- Another comment
+END OF LINE: . (LINEEND)
+
+
+CANCEL TICKET @{place} FOR {person_name} :: {ticket_no}.
+[CANCEL TICKET @ Knuford Express FOR Darrell King :: 6464463]
+
+
+CANCEL RESERVATION @ {place} FOR {person_name} :: {resv_no}.
+[CANCEL RESERVATION @ Knuford Express FOR Darrell King :: 6464463]
+
+BOOK RESERVATION @ {place} FOR {person_name} ON {date} FROM {location} TO {destination}.
+[]
+
+BOOK TICKET @ {place} FOR {person_name} FROM {location} TO {destination} ON {date}.
+[]
+
+CONFIRM RESERVATION @{place} FOR {person} :: {ticcket_no}.
+[CONFIRM RESERVATION @{place} FOR Darrell King :: 6464463.]
+
+PAY RESERVATION @{place} FOR {person} :: {ticcket_no}.
+[PAY RESERVATION @{place} FOR Darrell King :: 6464463.]
+
+LIST {statement_for_ai}.
+
+
+Are there any events in Kingston jamaica? If this is an event, please include the event date and time, the cost of tickets if the event is not free. You may also include any how many tickets are available if that information is available.
+
+
+Knutsford Express schedule. If this is an event, please include the event date and time, the cost of tickets if the event is not free. You may also include any how many tickets are available if that information is available.
+
+
+
+
+
+
+
+
+
+SAMPLE:
+BOOK RESERVATION @ "Palace" FOR "Darrell King" ON 2024-12-10 FROM "Kingston" TO "Maximum Bay"..
+book reservation @ "Palace" for "Darrell King" on 2024-12-10 from "Kingston" to "Maximum Bay"..
+
+
+
+
+
+
+def p_optitem(p):
+    """
+    optionalitem : item
+                | empty
+    """

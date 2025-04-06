@@ -1,0 +1,7 @@
+{
+  "SERVER": "LAPTOP-P1CKQV33\\SQLEXPRESS",
+  "DATABASE": "APLProjectDB",
+  "USERNAME": "apl",
+  "PASSWORD": "password1",
+  "DRIVER": "{ODBC Driver 17 for SQL Server}"
+}

@@ -1,0 +1,210 @@
+
+<program> ::= <statements>
+
+<statements> ::= <statement> <statements>
+              | <empty>
+
+<statement> ::= <declaration>
+              | <assignment>
+              | <print_statement>
+              | <conditionals>
+              | <book_reservation>
+              | <view_list_reservations>
+              | <cancel_reservation>
+              | <cancel_reservation_identifier>
+              | <confirm_reservation>
+              | <confirm_reservation_identifier>
+              | <pay_reservation>
+              | <pay_reservation_identifier>
+              | <list_api_events>
+              | <cancel_ticket_identifier>
+              | <cancel_ticket>
+              | <book_ticket>
+              | <view_list_tickets>
+              | <view_specific_tickets>
+              | <view_specific_reservations>
+
+<declaration> ::= <mutex> <type> "IDENTIFIER" "=" <expression> ".."
+                | <mutex> <type> "IDENTIFIER" ".."
+
+<assignment> ::= "IDENTIFIER" "=" <expression> ".."
+
+<print_statement> ::= "OUTPUT" "(" "STRING_LITERAL" "," "IDENTIFIER" ")" ".."
+                     | "OUTPUT" "(" "STRING_LITERAL" ")" ".."
+                     | "OUTPUT" "(" "IDENTIFIER" ")" ".."
+
+<conditionals> ::= <if_statement>
+                  | <for_statement>
+                  | <repeatif_statement>
+
+<if_statement> ::= "IF" <expression> "{" <statements> "}"
+    | "IF" <expression> "{" <statements> "}" "ELSE" "{" <statements> "}"
+    | "IF" <expression> "{" <statements> "}" "ELIF" <expression> "{" <statements> "}"
+    | "IF" <expression> "{" <statements> "}" "ELIF" <expression> "{" <statements> "}" "ELSE" "{" <statements> "}"
+
+<for_statement> ::= "FOR" "IDENTIFIER" "IN" "RANGE" "(" <arguments> ")" "{" <statements> "}"
+                   | "FOR" "IDENTIFIER" "IN" <iterables> "{" <statements> "}"
+
+<iterables> ::= "STRING_LITERAL"
+               | "IDENTIFIER"
+
+<repeatif_statement> ::= "REPEATIF" <expression> "{" <statements> "}"
+
+<book_reservation> ::= "BOOK" "RESERVATION" @P <place_name> "FOR" <person_name> "ON" DATE "FROM" <start_location> TO <destination> @T <record_time> ".."
+                       | "BOOK" "RESERVATION" @P <place_name> "FOR" <person_name> "ON" <date> @T <record_time> ".."
+
+<book_ticket> ::= "BOOK" "TICKET" @P<place_name> "FOR" <person_name> "ON" DATE "FROM" <start_location> TO <destination> @T <record_time> ".."
+
+<pay_reservation> ::= "PAY" "RESERVATION" @P<place> <place_name> "FOR" <person_name> :: <ticket_no> ".."
+
+<confirm_reservation> ::= "CONFIRM" "RESERVATION" @P<place_name> <place_name> "FOR" <person_name> :: <ticket_no> ".."
+
+<cancel_reservation> ::= CANCEL RESERVATION @P<place_name> FOR <person_name>
+
+<cancel_reservation_identifier> ::= CANCEL RESERVATION @P<place_name> FOR <person_name> :: <reservation_no> ".."
+
+<cancel_ticket> ::= CANCEL TICKET @P<place_name> FOR <person_name> ".."
+
+<cancel_ticket_identifier> ::= CANCEL TICKET @P<place_name> FOR <person_name> :: <ticket_no> ".."
+
+view_list_tickets ::= "VIEW" "TICKET" :: <ticket_status> ".."
+
+view_specific_tickets ::= "VIEW" "TICKET" "FOR" <person_name> ".."
+
+view_list_reservations ::= "VIEW" "RESERVATION" :: <reservation_status> ".."
+
+view_specific_reservations ::= "VIEW" "RESERVATION" "FOR" <person_name> ".."
+
+<parameter> ::= <type> "IDENTIFIER"
+
+<parameters> ::= <parameter> "," <parameters>
+                | <parameter>
+                | <empty>
+
+<arguments> ::= <argument> "," <arguments>
+               | <argument>
+               | <empty>
+
+<argument> ::= "IDENTIFIER"
+              | <expression>
+
+<mutex> ::= "DECLARE"
+
+<type> ::= "INT_TYPE"
+           | "FLOAT_TYPE"
+           | "BOOL_TYPE"
+           | "STRING_TYPE"
+
+<place_name> ::= "IDENTIFIER"
+                 | STRING_LITERAL
+
+<person_name> ::= "IDENTIFIER"
+                  | STRING_LITERAL
+
+<destination> ::= "IDENTIFIER"
+                  | STRING_LITERAL
+
+<start_location> ::= "IDENTIFIER"
+                     | STRING_LITERAL
+
+<record_time> ::= "IDENTIFIER"
+                  | STRING_LITERAL
+
+<ticket_no> ::= "IDENTIFIER"
+                 | STRING_LITERAL
+
+<reservation_no> ::= "IDENTIFIER"
+                 | STRING_LITERAL
+
+<ticket_status> ::= "IDENTIFIER"
+                    | STRING_LITERAL
+
+<reservation_status> ::= "IDENTIFIER"
+                        | STRING_LITERAL
+
+<expression> ::= "(" <expression> ")"
+               | <expression> "+" <expression>
+               | <expression> "-" <expression>
+               | <expression> "*" <expression>
+               | <expression> "/" <expression>
+               | <expression> "**" <expression>
+               | <expression> "!=" <expression>
+               | <expression> "<" <expression>
+               | <expression> ">" <expression>
+               | <expression> "<=" <expression>
+               | <expression> ">=" <expression>
+               | <expression> "==" <expression>
+               | <expression> "&" <expression>
+               | <expression> "|" <expression>
+               | <expression> "^" <expression>
+               | <expression> "<<" <expression>
+               | <expression> ">>" <expression>
+               | "!" <expression>
+               | "+" <expression>
+               | "-" <expression>
+               | "~" <expression>
+               | "INTEGER"
+               | "FLOAT"
+               | "IDENTIFIER"
+               | "BOOLEAN"
+               | "STRING_LITERAL"
+
+<error_type> ::= "UNBOUNDLOCALERROR"
+                | "TYPEERROR"
+                | "VALUEERROR"
+                | "INDEXERROR"
+                | "KEYERROR"
+                | "EXCEPTION"
+                | "SYNTAXERROR"
+                | "STOPITERATION"
+                | "ARITHMETICERROR"
+                | "FLOATINGPOINTERROR"
+                | "OVERFLOWERROR"
+                | "ZERODIVISIONERROR"
+                | "ASSERTIONERROR"
+                | "ATTRIBUTEERROR"
+                | "BUFFERERROR"
+                | "EOFERROR"
+                | "IMPORTERROR"
+                | "MODULENOTFOUNERROR"
+                | "LOOKUPERROR"
+                | "MEMORYERROR"
+                | "NAMEERROR"
+                | "BLOCKINGIOERROR"
+                | "CHILDPROCESSERROR"
+                | "CONNECTIONERROR"
+                | "BROKENPIPEERROR"
+                | "CONNECTIONABORTEDERROR"
+                | "CONNECTIONREFUSEDERROR"
+                | "CONNECTIONRESETERROR"
+                | "FILEEXISTERROR"
+                | "FILENOTFOUNERROR"
+                | "INTERRUPTEDERROR"
+                | "ISADIRECTORYERROR"
+                | "NOTADIRECTORYERROR"
+                | "PERMISSIONERROR"
+                | "PROCESSLOOKUPERROR"
+                | "TIMEOUTERROR"
+                | "REFERENCEERROR"
+                | "RUNTIMEERROR"
+                | "INDENTATIONERROR"
+                | "TABERROR"
+                | "SYSTEMERROR"
+                | "UNICODEERROR"
+                | "UNICODEENCODEERROR"
+                | "UNICODEDECODEERROR"
+                | "UNICODETRANSLATEERROR"
+                | "WARNING"
+                | "USERWARNING"
+                | "DEPRECATIONWARNING"
+                | "PENDINGDEPRECATIONWARNING"
+                | "SYNTAXWARNING"
+                | "RUNTIMEWARNING"
+                | "FUTUREWARNING"
+                | "IMPORTWARNING"
+                | "UNICODEWARNING"
+                | "BYTESWARNING"
+                | "RESOURCEWARNING"
+                | "KEYBOARDINTERRUPT"
+
+<empty> ::=
